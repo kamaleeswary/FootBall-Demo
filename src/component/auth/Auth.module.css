@@ -1,0 +1,108 @@
+.auth {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 45rem;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+    color: black;
+}
+
+.auth h1 {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.control {
+    margin-bottom: 0.5rem;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.fname {
+    display: flex;
+}
+
+.control label {
+    display: flex;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.control input {
+    font: inherit;
+    background-color: #f1e1fc;
+    color: black;
+    border-radius: 4px;
+    border: 1px solid white;
+    width: 100%;
+    text-align: left;
+    padding: 0.25rem;
+}
+
+.actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions button {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #008080;
+    border: 1px solid #008080;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+}
+
+.actions button:hover {
+    background-color: #008080;
+    border-color: #008080;
+}
+
+.actions .toggle {
+    margin-top: 1rem;
+    background-color: transparent;
+    color: blue;
+    border: none;
+    padding: 0.15rem 1.5rem;
+}
+
+.actions .toggle:hover {
+    background-color: transparent;
+    color: #ae82cc;
+}
+
+.mgender {
+    margin-left: 0.8rem;
+}
+
+.radiobtn {
+    display: flex;
+}
+
+.gender {
+    display: flex;
+}
+
+.align {
+    display: inherit;
+}
+
+.radiobtn input {
+    margin: 4px 4px 0 0;
+}
+
+.f {
+    margin-left: 0.8rem;
+}
+
+.checkbox {
+    margin-left: 0.8rem;
+}

@@ -1,0 +1,210 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    background: #131313 !important;
+    border-radius: 5px;
+
+}
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1200px;
+    transform-style: preserve-3d;
+}
+.container .box {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 80px !important;
+    background: linear-gradient(to bottom, #a2cbfa 0%, #df86e7 100%) !important;
+    border-radius: 20px !important;
+    transform-style: preserve-3d;
+}
+
+.container .box::before {
+    content: 'Foot Ball';
+    position: absolute;
+    top: 43px;
+    left: 30px;
+    font-size: 57px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+    opacity: 0;
+    transition: 0.5s;
+}
+.container .box::after {
+    content: 'Match';
+    position: absolute;
+    bottom: 20px;
+    right: 75px;
+    font-size: 50px;
+    font-weight: 900;
+    color: #fff;
+    font-style: italic;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.container .box:hover::before,
+.container .box:hover::after {
+    opacity: 0.04;
+}
+
+.container .box .name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    transform-style: preserve-3d;
+    transform:  translate3d(0,0,75px);
+    transition: 0.5s;
+    opacity: 1;
+    top: 30px;
+    z-index: 10;
+}
+
+.container .box:hover .name {
+    top: 40px;
+    opacity: 1;
+}
+.container .box .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transition: 0.5s;
+    background: #fff;
+    transform-style: preserve-3d;
+    z-index: 10;
+    opacity: 1;
+    transform: translate3d(-50%,-50%,0px);
+}
+.container .box .pimg {
+    position: absolute;
+    top: 71%;
+    left: 23%;
+    max-width: 190px;
+    max-height: 165px;
+    transition: 0.5s;
+    z-index: 11;
+    border-radius: 80px;
+    transform-style: preserve-3d;
+    transform: translate3d(-50%,-50%,50px) rotate(-25deg);
+}
+.container .box:hover .pimg {
+    transform: translate3d(-50%,-50%,100px) rotate(-15deg);
+
+}
+ 
+.pimg {
+    animation-duration: 870ms !important;
+    animation: animate 5s linear infinite; 
+    animation-delay: calc(1s * var(--delay));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+@keyframes animate {
+
+    0% {
+      opacity: 0;
+      transform: translateY(-100%) scale(0.5);
+    }
+    5%, 20% {
+      opacity: 0;
+      transform: translateY(-100%) scale(0.7);
+    }
+  
+    25%, 40% {
+      opacity: 1;
+      transform: translateY(-100%) scale(1);
+    }
+    45%, 60% {
+      opacity: 0;
+      transform: translateY(-100%) scale(0.7);
+    }
+    65%, 100%{
+      opacity: 0;
+      transform: translateY(-100%) scale(0.5);
+    }
+    
+  }
+
+.container .box:nth-child(1) .circle,
+.container .box:nth-child(1) .buy {
+    background: #379bf7;
+}
+.container .box:nth-child(2) .circle,
+.container .box:nth-child(2) .buy {
+    background: #9bdc28;
+}
+.container .box:nth-child(3) .circle,
+.container .box:nth-child(3) .buy {
+    background: #fb4b4f;
+}
+
+/* .pimg {
+    animation: text-shadow 2s ease-in-out infinite;
+  } 
+
+  .pimg:hover {
+    animation-play-state: paused;
+  } 
+ .container .box .buy {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate3d(-50%, 0,75px);
+    color: #fff;
+    background: #333;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.5s;
+    opacity: 0;
+    z-index: 10;
+} 
+ @keyframes text-shadow {
+    0% {  
+        transform: translateY(171%);
+    }
+
+    20% {  
+        transform: translateY(-16em);
+       
+    }
+
+    40% {  
+        transform: translateY(0.5em);
+      
+    }
+    
+   60% {
+        transform: translateY(-0.25em);
+      
+    }
+
+    80% {  
+        transform: translateY(0);
+
+    }
+}
+.container .box:hover .buy {
+    bottom: 30px;
+    opacity: 1;
+} */

@@ -1,0 +1,149 @@
+.auth {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 80%;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+    color: black;
+}
+
+.auth h1 {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.control {
+    margin-bottom: 0.5rem;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.fname {
+    display: flex;
+}
+
+.control label {
+    display: flex;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.control input {
+    font: inherit;
+    background-color: #f1e1fc;
+    color: black;
+    border-radius: 4px;
+    border: 1px solid white;
+    width: 100%;
+    text-align: left;
+    padding: 0.25rem;
+}
+
+.actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #008080;
+    border: 1px solid #008080;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+}
+
+.actions button:hover {
+    background-color: #008080;
+    border-color: #008080;
+}
+
+.mgender {
+    margin-left: 0.8rem;
+}
+
+.radiobtn {
+    display: flex;
+}
+
+.gender {
+    display: flex;
+}
+
+.align {
+    display: inherit;
+}
+
+.radiobtn input {
+    margin: 4px 4px 0 0;
+}
+
+.f {
+    margin-left: 0.8rem;
+}
+
+.box {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    display: flex;
+    position: relative;
+    margin-bottom: 2rem;
+    /* top: 103%; */
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+  
+  .box select {
+    background-color: #0563af;
+    color: white;
+    padding: 4px;
+    width: 180px;
+    border: none;
+    font-size: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box::before {
+    content: "\f13a";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .box select option {
+    padding: 30px;
+  }
+
+  .dLabel {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    margin-right: 1rem;
+  }
