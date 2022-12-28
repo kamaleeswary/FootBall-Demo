@@ -1,6 +1,7 @@
 import classes from './CompareTeam.module.css'
 
 const CompareTeam = () => {
+  
     return (
         <div className={classes.body}>
         <div className={classes.sign}>

@@ -1,0 +1,28 @@
+thead {
+    background: lightblue;
+}
+.button {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #008080;
+    border: 1px solid #008080;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+}
+
+.button:hover {
+    background-color: #008080;
+    border-color: #008080;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}

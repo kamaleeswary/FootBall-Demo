@@ -1,7 +1,10 @@
-thead {
-    background: lightblue;
+.actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
 }
-.button {
+
+.actions button {
     cursor: pointer;
     font: inherit;
     color: white;
@@ -11,13 +14,7 @@ thead {
     padding: 0.5rem 2.5rem;
 }
 
-.button:hover {
+.actions button:hover {
     background-color: #008080;
     border-color: #008080;
-}
-
-.createbtn {
-    margin: 0rem 0rem 4rem 0rem;
-    display: flex;
-    /* justify-content: end; */
 }

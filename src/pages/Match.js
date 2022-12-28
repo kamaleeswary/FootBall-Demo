@@ -1,8 +1,8 @@
-import MatchDetails from '../component/matchDetails/MatchDetails'
+import CreateMatch from '../component/matchDetails/CreateMatch';
 
-const Match = (props) => {
+const Match = () => {
 return(
-   <MatchDetails/>
+   <CreateMatch/>
 )
 }
 

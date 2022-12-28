@@ -1,20 +1,22 @@
 import { Redirect, Route, Switch } from "react-router-dom";
-import Layout from './component/layout/Layout'
+import Layout from "./component/layout/Layout";
 import Match from "./pages/Match";
 import NotFound from "./pages/NotFound";
 import PlayerList from "./pages/PlayerList";
 import SelectTeam from "./pages/SelectTeam";
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import Auth from "./component/auth/Auth";
 import Winners from "./pages/Winners";
-import AuthContext from "./store/AuthContext";
+import UpdatePlayer from "./component/playersList/UpdatePlayer";
+import AllMatches from "./component/matchDetails/AllMatches";
+import { useSelector } from 'react-redux';
+import DateTimePicker from "./component/matchDetails/DateTimePicker";
+
 
 function App() {
-  const authCtx = useContext(AuthContext);
-  let isLoggedIn = authCtx.isLoggedIn;
+  const token = useSelector((state) => state.auth.token);
 
-  console.log(isLoggedIn)
-
+  let isLoggedIn = token ? true : false;
 
   return (
     <Layout>
@@ -25,36 +27,70 @@ function App() {
           </div>
         }
       > */}
-        <Switch>
-          <Route path="/" exact>
-            <Redirect to="/login" />
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/login" />
+        </Route>
+        {!isLoggedIn && (
+          <Route path="/login" exact>
+            <Auth />
           </Route>
-          {!isLoggedIn && <Route path="/login" exact>
+        )}
+        {isLoggedIn && (
+          <Route path="/logout" exact>
             <Auth />
-          </Route>}
-         { isLoggedIn  && <Route path="/logout" exact>
-            <Auth />
-          </Route> }
-          { isLoggedIn  && <Route path="/playersList">
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/playersList" exact>
             <PlayerList />
-          </Route>}
-          { isLoggedIn  && <Route path="/matchDetails">
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/playersList/:playerName/:playerId">
+            <UpdatePlayer />
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/playersList/create">
+            <UpdatePlayer />
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/matchDetails" exact>
             <Match />
-            </Route>
-          }
-          { isLoggedIn  && <Route path="/winners">
+          </Route>
+        )}
+          {isLoggedIn && (
+          <Route path="/matchDetails/allMatches" exact>
+            <AllMatches />
+          </Route>
+        )}
+          {isLoggedIn && (
+          <Route path="/matchDetails/allMatches/edit">
+            <DateTimePicker />
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/pointsTable">
             <Winners />
-          </Route>}
-          { isLoggedIn  && <Route path="/selectTeam">
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/selectTeam">
             <SelectTeam />
-          </Route> }
-          <Route path="/not-found">
-            <NotFound />
           </Route>
-          <Route path="*">
-            <Redirect to="/not-found" />
-          </Route>
-        </Switch>
+        )}
+        <Route path="/not-found">
+          <NotFound />
+        </Route>
+       { isLoggedIn && <Route path="*">
+          <Redirect to="/playersList" />
+        </Route>}
+        { !isLoggedIn && <Route path="*">
+          <Redirect to="/login" />
+        </Route>}
+      </Switch>
       {/* </Suspense> */}
     </Layout>
   );

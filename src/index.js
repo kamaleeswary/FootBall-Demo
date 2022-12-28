@@ -4,17 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { AuthContextProvider } from "./store/AuthContext";
-import { TableContextProvider } from "./store/TableContext";
-
+import store from "./store";
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthContextProvider>
-    <TableContextProvider>
+  <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </TableContextProvider>
-  </AuthContextProvider>
+    </Provider>
 );

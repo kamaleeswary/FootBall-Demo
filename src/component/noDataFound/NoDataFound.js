@@ -1,21 +1,24 @@
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import AuthContext from '../../store/AuthContext';
 import classes from './NoDataFound.module.css';
 
-const NoDataFound = () => {
-  const authCtx = useContext(AuthContext);
-  let isLoggedIn = authCtx.isLoggedIn;
+const NoDataFound = (props) => {
+
+  const token = useSelector((state) => state.auth.token);
+
+  let isLoggedIn = token ? true : false;
+
+  const link = props.link;
  
 
   console.log(isLoggedIn)
   return (
     <div className={classes.noData}>
-      <p>No pages found!</p>
+      <p>No Data found!</p>
       {!isLoggedIn && <Link className='btn' to='/login'>
         Login
       </Link>}
-      {isLoggedIn && <Link className='btn' to='/playersList'>
+      {isLoggedIn && <Link className='btn' to={`/${link}`}>
         Players List
       </Link>}
 

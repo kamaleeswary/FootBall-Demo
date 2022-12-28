@@ -1,20 +1,19 @@
-import { useContext, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import AuthContext from "../../store/AuthContext";
+import { useSelector, useDispatch } from 'react-redux';
+import { authActions } from '../../store/AuthContext'
 
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
-  const authCtx = useContext(AuthContext);
   const history = useHistory();
-  let isLoggedIn = authCtx.isLoggedIn;
+  const dispatch = useDispatch();
+
+  const token = useSelector((state) => state.auth.token);
+
+  let isLoggedIn = token ? true : false;
  
-
-  console.log(isLoggedIn)
-  const authState = authCtx.inSignup ? "SignUp" : "Login"
-
   const logoutHandler = () => {
-    authCtx.logout();
+    dispatch(authActions.logout())
     history.push("/login");
   };
 
@@ -26,7 +25,7 @@ const MainNavigation = () => {
           {!isLoggedIn && (
             <li>
               <NavLink to="/login" activeClassName={classes.active}>
-                {authState}
+                Login
               </NavLink>
             </li>
           )}
@@ -54,7 +53,7 @@ const MainNavigation = () => {
           )}
             {isLoggedIn && (
             <li>
-              <NavLink to="/winners" activeClassName={classes.active}>
+              <NavLink to="/pointsTable" activeClassName={classes.active}>
                 Points Table
               </NavLink>
             </li>

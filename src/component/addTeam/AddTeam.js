@@ -1,59 +1,77 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import TableContext from "../../store/TableContext";
+import useHttp from "../../hook/use-http";
+import { buildTeam } from "../../lib/Api";
+import { useSelector } from 'react-redux';
 import FilteredTeams from "../filteredTeams/FilteredTeams";
 import classes from "./AddTeam.module.css";
+import TeamList from "./TeamList";
 
 const AddTeam = () => {
-  const [gender, setGender] = useState('none');
-  const [filteredTeam, setFilteredTeam] = useState('none');
-  const [filteredPlayers, setFilteredPlayers] = useState([]);
-  const [selectedPlayers, setSelectedPlayers] = useState([]);
+  const [gender, setGender] = useState("null");
+  const [filteredTeam, setFilteredTeam] = useState("null");
+  const [filteredPlayersList, setFilteredPlayersList] = useState(false);
+  // const [hasError, sethasError] = useState(false);
+
   const history = useHistory();
-  const tableCtx = useContext(TableContext);
 
-  
+  const {
+    sendRequest,
+    status,
+    error,
+  } = useHttp(buildTeam, true);
+
+  const token = useSelector((state) => state.auth.token);
+
   useEffect(() => {
-    if (filteredTeam !== 'none' && gender !== 'none') {
-      const filteredPlayersList = tableCtx.playersList.filter(palyers => palyers.gender === gender && palyers.team === filteredTeam);
-      if (filteredPlayersList.length === 0) {
-        alert('No players are matched by the filters');
+    if (filteredTeam !== "null" && gender !== "null") {
+      setFilteredPlayersList(true);
     }
-    setFilteredPlayers(filteredPlayersList);
-    }
-  },[filteredTeam, gender])
+  }, [filteredTeam, gender, sendRequest]);
 
-  // const submitHandler = (player) => {
-  //   selectedPlayers.push(player);
-  // };
+  if (error) {
+    return <p className="centered focused" style={{'textAlign': 'center'}}>{error + 'Please Try After SomeTime'}</p>;
+  }
+
+
+  if (status === 'completed') {
+    alert('Random Player Successfully Added into the Team')
+  }
+
 
   const genderChange = (e) => {
     setGender(e.target.value);
-  };   
-  
-  const handleChange = (e) => {
-    setFilteredTeam(e.target.value)
-  }
+  };
+
+  const handleTeamSelection = (value) => {
+    setFilteredTeam(value);
+  };
 
   const handleNavigation = () => {
-    history.push('/playersList')
-  }
- 
+    history.push("/playersList");
+  };
+
   const handleTeamformation = (e) => {
     e.preventDefault();
-    console.log(selectedPlayers);
+    if (filteredTeam !== 'null') {
+    const req = {
+      gender: gender,
+      teamId: filteredTeam,
+      token: token
+    }
+    sendRequest(req);
+  } else {
+    alert('Please Select One Team')
   }
+  };
   return (
     <section className={classes.auth}>
+     <div>
       <h1>Team Formation</h1>
       <form onSubmit={handleTeamformation}>
-        <div className={classes.control + ' ' + classes.box}>
+        <div className={classes.control + " " + classes.box}>
           <span className={classes.dLabel}> Teams</span>
-            <select onChange={handleChange}>
-              <option value='Team A'>Team A</option>
-              <option value='Team B'>Team B</option>
-              <option value='Team C'>Team C</option>
-            </select>
+          <TeamList filteredTeam={handleTeamSelection}/>
         </div>
         <div className={classes.gender}>
           <div className={classes.align + " col-xs-6"}>
@@ -63,7 +81,7 @@ const AddTeam = () => {
                 <input
                   id="male"
                   type="radio"
-                  value="male"
+                  value="M"
                   name="gender"
                   required
                   onChange={genderChange}
@@ -75,7 +93,7 @@ const AddTeam = () => {
                 <input
                   id="female"
                   type="radio"
-                  value="female"
+                  value="F"
                   name="gender"
                   required
                   onChange={genderChange}
@@ -85,27 +103,19 @@ const AddTeam = () => {
             </div>
           </div>
         </div>
-      {(filteredPlayers) && <FilteredTeams players={filteredPlayers}/>}
+        {filteredPlayersList && <FilteredTeams token={token}/>}
 
         <div className={classes.actions}>
           <button type="submit"> Random</button>
-          <button type="button" onClick={handleNavigation}> Cancel</button>
+          <button type="button" onClick={handleNavigation}>
+            Cancel
+          </button>
         </div>
       </form>
+      </div>
+
     </section>
   );
-  // <div>
-  //   <form>
-  //     <div>
-  //       <select className="my-select-menu">
-  //         <option>Option 1</option>
-  //         <option>Option 2</option>
-  //         <option>Option 3</option>
-  //       </select>
-  //       <p>ok</p>
-  //     </div>
-  //   </form>
-  // </div>
 };
 
 export default AddTeam;

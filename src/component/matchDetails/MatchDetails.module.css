@@ -157,54 +157,14 @@
     background: #fb4b4f;
 }
 
-/* .pimg {
-    animation: text-shadow 2s ease-in-out infinite;
-  } 
-
-  .pimg:hover {
-    animation-play-state: paused;
-  } 
- .container .box .buy {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform-style: preserve-3d;
-    transform: translate3d(-50%, 0,75px);
-    color: #fff;
-    background: #333;
-    padding: 10px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: 0.5s;
-    opacity: 0;
-    z-index: 10;
-} 
- @keyframes text-shadow {
-    0% {  
-        transform: translateY(171%);
-    }
-
-    20% {  
-        transform: translateY(-16em);
-       
-    }
-
-    40% {  
-        transform: translateY(0.5em);
-      
-    }
-    
-   60% {
-        transform: translateY(-0.25em);
-      
-    }
-
-    80% {  
-        transform: translateY(0);
-
-    }
+p {
+    font-family: 'Lato', sans-serif;
+    font-size: 3rem;
+    color: black;
+    margin: 0;
 }
-.container .box:hover .buy {
-    bottom: 30px;
-    opacity: 1;
-} */
+
+.align {
+    display: flex;
+    justify-content: center;
+}
